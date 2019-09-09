@@ -1,0 +1,85 @@
+<template>
+  <div class="level51-objectTagField">
+    <div class="flex">
+      <div
+        class="m1"
+        v-for="item in options"
+        :key="item.key">
+        {{ item.label }}
+        <select
+          @input="onSelect(item, $event)">
+          <option
+            v-for="valueOption in payload.valueOptions"
+            :key="valueOption.key"
+            :value="valueOption.key"
+            :selected="valueOption.key === item.value">
+            {{ valueOption.label }}
+          </option>
+        </select>
+      </div>
+    </div>
+
+    <input
+      type="hidden"
+      :name="payload.name"
+      :value="valueForStorage">
+  </div>
+</template>
+
+<script>
+export default {
+  props: {
+    payload: {
+      type: Object,
+      required: true
+    }
+  },
+  data() {
+    return {
+      newTagMinLength: 1,
+      newTag: '',
+      options: []
+    };
+  },
+  created() {
+    this.options = this.payload.source;
+  },
+  computed: {
+    valueForStorage() {
+      const selected = this.options.filter(option => option.value !== null);
+
+      const value = {};
+      selected.forEach((s) => {
+        value[s.key] = s.value;
+      });
+
+      return JSON.stringify(value);
+    }
+  },
+  methods: {
+    i18n(label) {
+      const { i18n } = this.payload;
+      return i18n.hasOwnProperty(label) ? i18n[label] : label;
+    },
+    onSelect(item, event) {
+      item.value = parseInt(event.target.value);
+    }
+  }
+};
+</script>
+
+<style lang="less">
+  // TODO proper styling
+  @import "~styles/base";
+
+  .level51-objectTagField {
+    border: 1px solid #ccc;
+    padding: @space-2;
+
+    .level51-objectTagField-tag {
+      padding: @space-1 @space-2;
+      background: #ddd;
+      margin: @space-1;
+    }
+  }
+</style>

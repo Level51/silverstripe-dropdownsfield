@@ -1,17 +1,18 @@
 <?php
 
-namespace Level51\ObjectTagField;
+namespace Level51\DropdownsField;
 
 use SilverStripe\Forms\FormField;
 use SilverStripe\View\Requirements;
 
 /**
- * Class ObjectTagField
- * @package Level51\ObjectTagField
+ * A FormField which renders multiple dropdowns and stores the results as a JSON object.
+ *
+ * @package Level51\DropdownsField
  *
  * @todo cleanup and documentation
  */
-class ObjectTagField extends FormField {
+class DropdownsField extends FormField {
 
     protected $source;
 
@@ -28,8 +29,8 @@ class ObjectTagField extends FormField {
     }
 
     public function Field($properties = array()) {
-        Requirements::javascript('level51/silverstripe-object-tagfield: client/dist/objectTagField.js');
-        Requirements::css('level51/silverstripe-object-tagfield: client/dist/objectTagField.css');
+        Requirements::javascript('level51/silverstripe-dropdownsfield: client/dist/dropdownsField.js');
+        Requirements::css('level51/silverstripe-dropdownsfield: client/dist/dropdownsField.css');
 
         return parent::Field($properties);
     }

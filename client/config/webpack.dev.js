@@ -8,7 +8,7 @@ const resolve = require('./webpack.resolve').forWebpack;
 module.exports = env => ({
 
   entry: {
-    objectTagField: ['@babel/polyfill/noConflict', 'src/objectTagField.js']
+    dropdownsField: ['@babel/polyfill/noConflict', 'src/dropdownsField.js']
   },
 
   output: {
@@ -36,7 +36,8 @@ module.exports = env => ({
           options: {
             plugins: [
               '@babel/plugin-proposal-object-rest-spread',
-              '@babel/plugin-syntax-dynamic-import'
+              '@babel/plugin-syntax-dy' +
+              'namic-import'
             ],
             presets: [['@babel/preset-env', { modules: false }, '@babel/preset-stage-3']]
           }

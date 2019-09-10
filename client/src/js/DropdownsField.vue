@@ -1,5 +1,5 @@
 <template>
-  <div class="level51-objectTagField">
+  <div class="level51-dropdownsField">
     <div class="flex">
       <div
         class="m1"
@@ -72,14 +72,8 @@ export default {
   // TODO proper styling
   @import "~styles/base";
 
-  .level51-objectTagField {
+  .level51-dropdownsField {
     border: 1px solid #ccc;
     padding: @space-2;
-
-    .level51-objectTagField-tag {
-      padding: @space-1 @space-2;
-      background: #ddd;
-      margin: @space-1;
-    }
   }
 </style>

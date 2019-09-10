@@ -363,6 +363,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
+    /**
+     * Field config passed from the "getPayload" method of the DropdownsField class.
+     */
     payload: {
       type: Object,
       required: true
@@ -370,15 +373,21 @@ __webpack_require__.r(__webpack_exports__);
   },
   data: function data() {
     return {
-      newTagMinLength: 1,
-      newTag: '',
       options: []
     };
   },
   created: function created() {
+    // Get a copy of the available options as selection will manipulate the values.
     this.options = this.payload.source;
   },
   computed: {
+    /**
+     * The value maintained in a hidden input field which will be written to the DB.
+     *
+     * Generates a JSON object with all options with a value.
+     *
+     * @return {string}
+     */
     valueForStorage: function valueForStorage() {
       var selected = this.options.filter(function (option) {
         return option.value !== null && option.value !== '';
@@ -391,10 +400,6 @@ __webpack_require__.r(__webpack_exports__);
     }
   },
   methods: {
-    i18n: function i18n(label) {
-      var i18n = this.payload.i18n;
-      return i18n.hasOwnProperty(label) ? i18n[label] : label;
-    },
     onSelect: function onSelect(item, event) {
       item.value = event.target.value;
     }
@@ -10622,10 +10627,11 @@ var render = function() {
   return _c("div", { staticClass: "level51-dropdownsField" }, [
     _c(
       "div",
-      { staticClass: "flex" },
+      { staticClass: "flex flex-wrap mxn3" },
       _vm._l(_vm.options, function(item) {
-        return _c("div", { key: item.key, staticClass: "m1" }, [
-          _vm._v("\n      " + _vm._s(item.label) + "\n      "),
+        return _c("div", { key: item.key, staticClass: "my2 mx3" }, [
+          _c("label", [_vm._v(_vm._s(item.label))]),
+          _vm._v(" "),
           _c(
             "select",
             {

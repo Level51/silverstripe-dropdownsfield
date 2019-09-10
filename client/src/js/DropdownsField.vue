@@ -1,11 +1,11 @@
 <template>
   <div class="level51-dropdownsField">
-    <div class="flex">
+    <div class="flex flex-wrap mxn3">
       <div
-        class="m1"
+        class="my2 mx3"
         v-for="item in options"
         :key="item.key">
-        {{ item.label }}
+        <label>{{ item.label }}</label>
         <select
           @input="onSelect(item, $event)">
           <option
@@ -29,6 +29,9 @@
 <script>
 export default {
   props: {
+    /**
+     * Field config passed from the "getPayload" method of the DropdownsField class.
+     */
     payload: {
       type: Object,
       required: true
@@ -36,15 +39,21 @@ export default {
   },
   data() {
     return {
-      newTagMinLength: 1,
-      newTag: '',
       options: []
     };
   },
   created() {
+    // Get a copy of the available options as selection will manipulate the values.
     this.options = this.payload.source;
   },
   computed: {
+    /**
+     * The value maintained in a hidden input field which will be written to the DB.
+     *
+     * Generates a JSON object with all options with a value.
+     *
+     * @return {string}
+     */
     valueForStorage() {
       const selected = this.options.filter(option => option.value !== null && option.value !== '');
 
@@ -57,10 +66,6 @@ export default {
     }
   },
   methods: {
-    i18n(label) {
-      const { i18n } = this.payload;
-      return i18n.hasOwnProperty(label) ? i18n[label] : label;
-    },
     onSelect(item, event) {
       item.value = event.target.value;
     }
@@ -69,11 +74,12 @@ export default {
 </script>
 
 <style lang="less" scoped>
-  // TODO proper styling
   @import "~styles/base";
 
   .level51-dropdownsField {
-    border: 1px solid #ccc;
-    padding: @space-2;
+    label {
+      display: block;
+      margin-bottom: @space-1;
+    }
   }
 </style>

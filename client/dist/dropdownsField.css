@@ -4225,9 +4225,9 @@
     order: 99999;
 }
 }
-.level51-dropdownsField[data-v-f250a4c6] {
-  border: 1px solid #ccc;
-  padding: 8px;
+.level51-dropdownsField label[data-v-f250a4c6] {
+  display: block;
+  margin-bottom: 4px;
 }
 
 

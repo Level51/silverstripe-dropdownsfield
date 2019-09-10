@@ -1,8 +1,8 @@
 {
-  "name": "level51/silverstripe-object-tagfield",
+  "name": "level51/silverstripe-dropdownsfield",
   "version": "0.0.1",
   "time": "2019-09-09",
-  "description": "Object TagField for SilverStripe",
+  "description": "FormField which renders multiple dropdowns and stores the results as a JSON object.",
   "keywords": [
     "silverstripe"
   ],
@@ -20,7 +20,7 @@
     "silverstripe/framework": "^4.0"
   },
   "extra": {
-    "installer-name": "silverstripe-object-tagfield",
+    "installer-name": "silverstripe-dropdownsfield",
     "expose": [
       "client"
     ]
@@ -28,7 +28,7 @@
   "minimum-stability": "dev",
   "autoload": {
     "psr-4": {
-      "Level51\\ObjectTagField\\": "src/"
+      "Level51\\DropdownsField\\": "src/"
     }
   }
 }

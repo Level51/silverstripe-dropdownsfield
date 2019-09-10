@@ -1,7 +1,7 @@
 {
-  "name": "silverstripe-object-tagfield",
+  "name": "silverstripe-dropdownsfield",
   "version": "0.0.1",
-  "description": "Object TagField for SilverStripe",
+  "description": "FormField which renders multiple dropdowns and stores the results as a JSON object.",
   "authors": {
     "name": "Level51",
     "email": "hallo@lvl51.de"

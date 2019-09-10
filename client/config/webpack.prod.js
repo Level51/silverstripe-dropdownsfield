@@ -11,7 +11,7 @@ const resolve = require('./webpack.resolve').forWebpack;
 module.exports = env => ({
 
   entry: {
-    objectTagField: ['@babel/polyfill/noConflict', 'src/objectTagField.js']
+    dropdownsField: ['@babel/polyfill/noConflict', 'src/dropdownsField.js']
   },
 
   output: {

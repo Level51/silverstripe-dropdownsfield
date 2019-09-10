@@ -1,5 +1,5 @@
-# SilverStripe object tagfield
-A tagfield for SilverStripe allowing to select a second level per tag.
+# SilverStripe dropdowns field
+FormField which renders multiple dropdowns and stores the results as a JSON object.
 
 ## Requirements
 - SilverStripe ^4

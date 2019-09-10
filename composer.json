@@ -1,7 +1,7 @@
 {
   "name": "level51/silverstripe-dropdownsfield",
-  "version": "0.0.1",
-  "time": "2019-09-09",
+  "version": "0.1.0",
+  "time": "2019-09-10",
   "description": "FormField which renders multiple dropdowns and stores the results as a JSON object.",
   "keywords": [
     "silverstripe"

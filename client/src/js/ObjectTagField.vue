@@ -46,7 +46,7 @@ export default {
   },
   computed: {
     valueForStorage() {
-      const selected = this.options.filter(option => option.value !== null);
+      const selected = this.options.filter(option => option.value !== null && option.value !== '');
 
       const value = {};
       selected.forEach((s) => {
@@ -62,13 +62,13 @@ export default {
       return i18n.hasOwnProperty(label) ? i18n[label] : label;
     },
     onSelect(item, event) {
-      item.value = parseInt(event.target.value);
+      item.value = event.target.value;
     }
   }
 };
 </script>
 
-<style lang="less">
+<style lang="less" scoped>
   // TODO proper styling
   @import "~styles/base";
 

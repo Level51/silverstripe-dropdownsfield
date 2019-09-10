@@ -45,11 +45,13 @@ class ObjectTagField extends FormField {
         $source = $this->getSource();
 
         foreach ($source as $index => $sourceItem) {
-            $v = array_filter($value, function ($item) use ($sourceItem) {
-                return $item['key'] === $sourceItem['key'];
-            });
+            if ($value) {
+                $v = array_filter($value, function ($item) use ($sourceItem) {
+                    return $item['key'] === $sourceItem['key'];
+                });
+            }
 
-            $source[$index]['value'] = $v && !empty($v) ? array_shift($v)['value'] : null;
+            $source[$index]['value'] = isset($v) && $v && !empty($v) ? array_shift($v)['value'] : null;
         }
 
         return json_encode([

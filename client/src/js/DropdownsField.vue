@@ -45,6 +45,11 @@ export default {
   created() {
     // Get a copy of the available options as selection will manipulate the values.
     this.options = this.payload.source;
+
+    // Select an initial value for each options without value
+    this.options.forEach((o) => {
+      if (!o.value) o.value = this.initialValue.key;
+    });
   },
   computed: {
     /**
@@ -55,7 +60,7 @@ export default {
      * @return {string}
      */
     valueForStorage() {
-      const selected = this.options.filter(option => option.value !== null && option.value !== '');
+      const selected = this.options.filter((option) => option.value !== null && option.value !== '');
 
       const value = {};
       selected.forEach((s) => {
@@ -63,6 +68,19 @@ export default {
       });
 
       return JSON.stringify(value);
+    },
+
+    /**
+     * The initial value for each option which has no value selected yet.
+     *
+     * Is either the option with null or "" as key if provided, otherwise the first one.
+     *
+     * @return {*}
+     */
+    initialValue() {
+      const nullOption = this.payload.valueOptions.find((o) => o.key === null || o.key === '');
+
+      return nullOption || this.payload.valueOptions[0];
     }
   },
   methods: {

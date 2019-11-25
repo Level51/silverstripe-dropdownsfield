@@ -84,7 +84,7 @@ class DropdownsField extends FormField {
      */
     public function Value() {
         if ($this->value) {
-            $val = json_decode($this->value, true);
+            $val = is_array($this->value) ? $this->value : json_decode($this->value, true);
 
             return array_map(function ($key) use ($val) {
                 return [

@@ -18,6 +18,10 @@ class DropdownsField extends FormField {
 
     protected $valueOptions;
 
+    protected $hasEmptyDefault = false;
+
+    protected $emptyString = '';
+
     /**
      * DropdownsField constructor.
      *
@@ -32,6 +36,8 @@ class DropdownsField extends FormField {
 
         if (!isset($title))
             $title = $name;
+
+        $this->emptyString = _t(__CLASS__ . '.EMPTY_STRING');
 
         parent::__construct($name, $title, null);
     }
@@ -147,6 +153,28 @@ class DropdownsField extends FormField {
     }
 
     /**
+     * @param $bool
+     *
+     * @return $this
+     */
+    public function setHasEmptyDefault($bool) {
+        $this->hasEmptyDefault = $bool;
+
+        return $this;
+    }
+
+    /**
+     * @param $string
+     *
+     * @return $this
+     */
+    public function setEmptyString($string) {
+        $this->setHasEmptyDefault(true);
+        $this->emptyString = $string;
+        return $this;
+    }
+
+    /**
      * @return array
      */
     public function getSource() {
@@ -157,6 +185,11 @@ class DropdownsField extends FormField {
      * @return array
      */
     public function getValueOptions() {
-        return $this->valueOptions;
+        $options = $this->valueOptions;
+
+        if ($this->hasEmptyDefault)
+            array_unshift($options, ['key' => '', 'label' => $this->emptyString]);
+
+        return $options;
     }
 }

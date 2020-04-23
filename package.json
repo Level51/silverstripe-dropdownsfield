@@ -1,6 +1,6 @@
 {
   "name": "silverstripe-dropdownsfield",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "FormField which renders multiple dropdowns and stores the results as a JSON object.",
   "authors": {
     "name": "Level51",
